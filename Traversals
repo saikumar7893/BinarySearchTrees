@@ -1,0 +1,127 @@
+Check for BST:
+-------------
+
+public class Solution
+{
+ boolean isBST(Node root)
+    {
+        return solve(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+    }
+    
+    boolean solve(Node root, int min, int max){
+        if(root == null) return true;
+        if(!(root.data > min && root.data < max))return false;
+        return solve(root.left, min, root.data) && solve(root.right, root.data, max);
+    }
+    
+}
+
+
+
+-----------------------------------------------------------------------------------------------------------------
+BinaryTreeTraversals:
+Inorder Traversal:
+
+
+// User function Template for Java
+
+/* A Binary Tree node
+
+class Node {
+    int data;
+    Node left, right;
+   Node(int item)    {
+        data = item;
+        left = right = null;
+    }
+} */
+class Solution {
+    // Function to return a list containing the inorder traversal of the tree.
+    ArrayList<Integer> inOrder(Node root) {
+        ArrayList<Integer>al=new ArrayList<>();
+        {
+            if(root!=null)
+            {
+            al.addAll(inOrder(root.left));
+            al.add(root.data);
+            al.addAll(inOrder(root.right));
+        }
+        return al;
+       
+    }
+}
+}
+-----------------------------------------------------------------------------------------
+Preorder Traversal:
+
+class BinaryTree
+{
+    //Function to return a list containing the preorder traversal of the tree.
+    static ArrayList<Integer> preorder(Node root)
+    {
+        ArrayList<Integer>list=new ArrayList<>();
+        {
+            if(root!=null)
+            {
+                list.add(root.data);
+                list.addAll(preorder(root.left));
+                list.addAll(preorder(root.right));
+            }
+            return list;
+        }
+    }
+
+}
+-------------------------------------------------------------------------------------------
+Post Order Traversal:
+class Tree
+{
+    //Function to return a list containing the postorder traversal of the tree.
+    ArrayList<Integer> postOrder(Node root)
+    {
+      ArrayList<Integer>list=new ArrayList<>();
+      {
+          if(root!=null)
+          {
+              list.addAll(postOrder(root.left));
+              list.addAll(postOrder(root.right));
+              list.add(root.data);
+          }
+          return list;
+      }
+    }
+}
+
+-------------------------------------------------------------------------------------------------
+Level Order Traversal:
+class Solution
+{
+    //Function to return the level order traversal of a tree.
+    static ArrayList <Integer> levelOrder(Node node) 
+    {
+        ArrayList<Integer>al=new ArrayList<>();
+        if(node==null)
+        {
+        return al;
+        }
+        Queue<Node>queue=new LinkedList<>();
+        queue.add(node);
+        while(!queue.isEmpty())
+        {
+        Node res=queue.poll();
+        al.add(res.data);
+        if(res.left!=null)
+        {
+            queue.add(res.left);
+        }
+        if(res.right!=null)
+        {
+            queue.add(res.right);
+        }
+    }
+    return al;
+    }
+}
+
+
+
